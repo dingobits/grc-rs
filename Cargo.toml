@@ -17,3 +17,7 @@ argparse = "^0.2.2"
 which = "^4.2.2"
 fancy-regex = "^0.7.1"
 shellexpand = "^2.1.0"
+
+[profile.release]
+strip = "symbols"
+lto = "fat"
