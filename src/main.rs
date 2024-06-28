@@ -174,10 +174,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let config_paths = [
         "/etc/grc.conf",
         "~/.grc",
-        "~/.config/grc/grc",
+        "~/.config/grc/grc.conf",
         "/etc/grc-rs.conf",
         "~/.grc-rs",
-        "~/.config/grc-rs/grc-rs",
+        "~/.config/grc-rs/grc-rs.conf",
     ];
 
     let rules: Vec<GrcatConfigEntry> = config_paths
@@ -214,11 +214,14 @@ fn load_config(path: &str, pseudo_command: &str) -> Vec<GrcatConfigEntry> {
     // Paths where we search for for conf.<command>. Search user files first.
     let resource_paths = [
         "~/.config/grc",
+        "~/.local/share/grc",
+        "/usr/share/grc",
+        "/usr/local/share/grc",
+        "/opt/homebrew/share/grc",
         "~/.config/grc-rs",
         "~/.local/share/grc-rs",
-        "~/.local/share/grc",
         "/usr/share/grc-rs",
-        "/usr/share/grc",
+        "/usr/local/share/grc-rs",
     ];
 
     if let Ok(f) = File::open(path) {
